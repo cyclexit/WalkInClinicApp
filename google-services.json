@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "475839722722",
+    "firebase_url": "https://walkinclinicapp-4854b.firebaseio.com",
+    "project_id": "walkinclinicapp-4854b",
+    "storage_bucket": "walkinclinicapp-4854b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475839722722:android:c64ea0fbf22c52f88f9abb",
+        "android_client_info": {
+          "package_name": "com.example.walkinclinicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475839722722-2rpnsq9n7d6boliqe28ml3t303tagr5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK7WTxtgcPHXFJhmAlOP6kNMT0cKpKCLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475839722722-2rpnsq9n7d6boliqe28ml3t303tagr5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/selectedRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/clinicsforAdminCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <ListView
+                    android:id="@+id/clinicsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textViewClinicsAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
+                android:visibility="gone" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:imeOptions="normal"
+                        android:queryHint="Search a Clinic"
+                        android:touchscreenBlocksFocus="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/searchOptions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonByName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="By Name" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonByAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="By Address" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonByWorkingHour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="By Time" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonByService"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="By Service" />
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSearchResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="2dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <ListView
+                    android:id="@+id/searchListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewByServiceSearchResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="2dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <ListView
+                    android:id="@+id/searchByServiceListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="5dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textViewNullProfileAlert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="Please set your working hour!"
+                                android:textColor="@color/colorAccent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/buttonCreateProfile"
+                                app:layout_constraintStart_toStartOf="@+id/buttonCreateProfile"
+                                app:layout_constraintTop_toBottomOf="@+id/buttonCreateProfile" />
+
+                            <TextView
+                                android:id="@+id/textViewPho"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Phone:"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewClinicName" />
+
+                            <TextView
+                                android:id="@+id/textViewClinicName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="Clinic Name"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewPhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewPho"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPho" />
+
+                            <TextView
+                                android:id="@+id/textViewAddr"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Address:"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@+id/textViewPho"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewPho" />
+
+                            <TextView
+                                android:id="@+id/textViewAddressHome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                app:layout_constraintStart_toEndOf="@+id/textViewAddr"
+                                app:layout_constraintTop_toTopOf="@+id/textViewAddr" />
+
+                            <TextView
+                                android:id="@+id/textViewInsur"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Insurance Type:"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@+id/textViewAddr"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewAddr" />
+
+                            <TextView
+                                android:id="@+id/textViewInsuranceType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewInsur"
+                                app:layout_constraintStart_toEndOf="@+id/textViewInsur" />
+
+                            <TextView
+                                android:id="@+id/textViewPay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Payment Type:"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@+id/textViewInsur"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewInsur" />
+
+                            <TextView
+                                android:id="@+id/textViewPaymentType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewPay"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPay" />
+
+                            <TextView
+                                android:id="@+id/textViewBlank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/textViewPaymentType"
+                                app:layout_constraintStart_toStartOf="@+id/textViewPay"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewPaymentType" />
+
+                            <Button
+                                android:id="@+id/buttonCreateProfile"
+                                android:layout_width="150dp"
+                                android:layout_height="36dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="@drawable/button_red"
+                                android:text="Create Profile"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewPaymentType" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewWorkingHour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="5dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textViewWorkingHour"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Working Hour:"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewMondayStartShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewMonday"
+                                app:layout_constraintStart_toEndOf="@+id/textViewMonday"
+                                app:layout_constraintTop_toTopOf="@+id/textViewMonday" />
+
+                            <TextView
+                                android:id="@+id/textViewMonday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="16dp"
+                                android:text="Monday:"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewWorkingHour" />
+
+                            <TextView
+                                android:id="@+id/textViewMondaySelectStart"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewMonday"
+                                app:layout_constraintStart_toEndOf="@+id/textViewMonday"
+                                app:layout_constraintTop_toTopOf="@+id/textViewMonday" />
+
+                            <TextView
+                                android:id="@+id/textViewTo1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="to"
+                                app:layout_constraintStart_toEndOf="@+id/textViewMondaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewMonday" />
+
+                            <TextView
+                                android:id="@+id/textViewMondayEndShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTo1"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo1"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTo1" />
+
+                            <TextView
+                                android:id="@+id/textViewMondaySelectEnd"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo1"
+                                app:layout_constraintTop_toTopOf="@+id/textViewMondaySelectStart" />
+
+                            <TextView
+                                android:id="@+id/textViewTuesday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="21dp"
+                                android:text="Tuesday:"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewMonday"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewMonday" />
+
+                            <TextView
+                                android:id="@+id/textViewTuesdayStartShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTuesday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewMondayStartShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTuesday"
+                                app:layout_constraintStart_toStartOf="@+id/textViewMondayStartShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTuesday" />
+
+                            <TextView
+                                android:id="@+id/textViewTuesdaySelectStart"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTuesday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewMondaySelectStart"
+                                app:layout_constraintStart_toStartOf="@+id/textViewMondaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTuesday" />
+
+                            <TextView
+                                android:id="@+id/textViewTo2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="to"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTuesdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTuesday" />
+
+                            <TextView
+                                android:id="@+id/textViewTuesdayEndShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTo2"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewMondayEndShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo2"
+                                app:layout_constraintStart_toStartOf="@+id/textViewMondayEndShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTo2" />
+
+                            <TextView
+                                android:id="@+id/textViewTuesdaySelectEnd"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewMondaySelectEnd"
+                                app:layout_constraintStart_toStartOf="@+id/textViewMondaySelectEnd"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewMondaySelectStart" />
+
+                            <TextView
+                                android:id="@+id/textViewWednesday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="21dp"
+                                android:text="Wednesday:"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewTuesday"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTuesday" />
+
+                            <TextView
+                                android:id="@+id/textViewWednesdayStartShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewWednesday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewTuesdayStartShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewWednesday"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTuesdayStartShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewWednesday" />
+
+                            <TextView
+                                android:id="@+id/textViewWednesdaySelectStart"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewWednesday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewTuesdaySelectStart"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTuesdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewWednesday" />
+
+                            <TextView
+                                android:id="@+id/textViewTo3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="to"
+                                app:layout_constraintStart_toEndOf="@+id/textViewWednesdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewWednesday" />
+
+                            <TextView
+                                android:id="@+id/textViewWednesdayEndShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTo3"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewTuesdayEndShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo3"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTuesdayEndShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTo3" />
+
+                            <TextView
+                                android:id="@+id/textViewWednesdaySelectEnd"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewTuesdaySelectEnd"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTuesdaySelectEnd"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTuesdaySelectStart" />
+
+                            <TextView
+                                android:id="@+id/textViewThursday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="21dp"
+                                android:text="Thursday:"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewWednesday"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewWednesday" />
+
+                            <TextView
+                                android:id="@+id/textViewThursdayStartShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewThursday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewWednesdayStartShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewThursday"
+                                app:layout_constraintStart_toStartOf="@+id/textViewWednesdayStartShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewThursday" />
+
+                            <TextView
+                                android:id="@+id/textViewThursdaySelectStart"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewThursday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewWednesdaySelectStart"
+                                app:layout_constraintStart_toStartOf="@+id/textViewWednesdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewThursday" />
+
+                            <TextView
+                                android:id="@+id/textViewTo4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="to"
+                                app:layout_constraintStart_toEndOf="@+id/textViewThursdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewThursday" />
+
+                            <TextView
+                                android:id="@+id/textViewThursdayEndShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTo4"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewWednesdayEndShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo4"
+                                app:layout_constraintStart_toStartOf="@+id/textViewWednesdayEndShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTo4" />
+
+                            <TextView
+                                android:id="@+id/textViewThursdaySelectEnd"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewWednesdaySelectEnd"
+                                app:layout_constraintStart_toStartOf="@+id/textViewWednesdaySelectEnd"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewWednesdaySelectStart" />
+
+                            <TextView
+                                android:id="@+id/textViewFriday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="21dp"
+                                android:text="Friday:"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewThursday"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewThursday" />
+
+                            <TextView
+                                android:id="@+id/textViewFridayStartShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewFriday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewThursdayStartShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewFriday"
+                                app:layout_constraintStart_toStartOf="@+id/textViewThursdayStartShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewFriday" />
+
+                            <TextView
+                                android:id="@+id/textViewFridaySelectStart"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewFriday"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewThursdaySelectStart"
+                                app:layout_constraintStart_toStartOf="@+id/textViewThursdaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewFriday" />
+
+                            <TextView
+                                android:id="@+id/textViewTo5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="to"
+                                app:layout_constraintStart_toEndOf="@+id/textViewFridaySelectStart"
+                                app:layout_constraintTop_toTopOf="@+id/textViewFriday" />
+
+                            <TextView
+                                android:id="@+id/textViewFridayEndShow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewTo5"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewThursdayEndShow"
+                                app:layout_constraintStart_toEndOf="@+id/textViewTo5"
+                                app:layout_constraintStart_toStartOf="@+id/textViewThursdayEndShow"
+                                app:layout_constraintTop_toTopOf="@+id/textViewTo5" />
+
+                            <TextView
+                                android:id="@+id/textViewFridaySelectEnd"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drop_down_text_view_bg"
+                                android:clickable="true"
+                                android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="-"
+                                android:textSize="15sp"
+                                android:visibility="invisible"
+                                app:layout_constraintEnd_toEndOf="@+id/textViewThursdaySelectEnd"
+                                app:layout_constraintStart_toStartOf="@+id/textViewThursdaySelectEnd"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewThursdaySelectStart" />
+
+                            <Button
+                                android:id="@+id/buttonSaveTime"
+                                android:layout_width="100dp"
+                                android:layout_height="36dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="@drawable/button_red"
+                                android:text="Save"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewFridaySelectStart" />
+
+                            <TextView
+                                android:id="@+id/textViewTimeSetAlert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="Please set your working hour!"
+                                android:textColor="@color/colorAccent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/buttonSaveTime"
+                                app:layout_constraintStart_toStartOf="@+id/buttonSaveTime"
+                                app:layout_constraintTop_toBottomOf="@+id/buttonSaveTime" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewSelectedServices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="5dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:id="@+id/textViewSelectedServices"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Provided Services:"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/recyclerViewSelectedServices"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                                android:id="@+id/recyclerViewSelectedServices"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:scrollbars="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewSelectedServices" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="5dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textViewRatingTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Comments"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ListView
+                                android:id="@+id/listViewRating"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:divider="@color/colorWhite"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewRatingTitle" />
+
+                            <Button
+                                android:id="@+id/buttonPatientRate"
+                                android:layout_width="200dp"
+                                android:layout_height="36dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/button_red"
+                                android:text="Rate Your Experience"
+                                android:textColor="@color/colorWhite"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/listViewRating" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">WalkInClinicApp</string>
+    <string name="login_text_view_version_text">Version: Deliverable 4</string>
+
+    <!--login-->
+    <string name="login_text_view_login_title_text">Login</string>
+    <string name="login_edit_text_email_hint">E-mail or Username</string>
+    <string name="login_edit_text_password_hint">Password</string>
+    <string name="login_button_register_text">Register</string>
+    <string name="login_button_sign_in_text">Sign in</string>
+    <string name="login_check_remember_text"><b>Remember me</b></string>
+    <string name="login_edit_text_register_instruction_text"><u>Don\'t have an account? Hit me!</u></string>
+
+    <!--register-->
+    <string name="register_button_register_title_text">Register</string>
+    <string name="register_edit_text_first_name_hint">First Name</string>
+    <string name="register_edit_text_last_name_hint">Last Name</string>
+    <string name="register_edit_text_email_hint">E-mail Address</string>
+    <string name="register_edit_text_username_hint">User Name</string>
+    <string name="register_radio_administrator_text">Administrator</string>
+    <string name="register_radio_employee_text">Employee</string>
+    <string name="register_radio_patient_text">Patient</string>
+    <string name="register_edit_text_verify_password_hint">Verify password</string>
+    <string name="register_button_create_account_text">Create Account</string>
+    <string name="register_edit_text_select_account_text">Please select an account type:</string>
+
+    <!--home-->
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Default</string>
+    <string name="nav_header_subtitle">Default@default.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_signout">Sign Out</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_service">Service</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_appointment">Appointment</string>
+
+</resources>

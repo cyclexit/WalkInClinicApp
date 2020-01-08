@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <EditText
+        android:id="@+id/editTextClinicNameHome"
+        android:layout_width="280sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Clinic Name"
+        android:inputType="textPostalAddress"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextAddressHome1"
+        android:layout_width="280sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address Line 1"
+        android:inputType="textPostalAddress"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextClinicNameHome" />
+
+    <EditText
+        android:id="@+id/editTextAddressHome2"
+        android:layout_width="280sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address Line 2"
+        android:inputType="textPostalAddress"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddressHome1" />
+
+    <EditText
+        android:id="@+id/editTextPostalHome"
+        android:layout_width="280sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Postal Code"
+        android:inputType="textPostalAddress"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddressHome2" />
+
+    <EditText
+        android:id="@+id/editTextPhoneHome"
+        android:layout_width="280sp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPostalHome" />
+
+    <TextView
+        android:id="@+id/textViewSelectPaymentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Please select a payment method:"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhoneHome"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneHome" />
+
+    <TextView
+        android:id="@+id/textViewSelectPayment"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/drop_down_text_view_bg"
+        android:clickable="true"
+        android:drawableRight="@drawable/sharp_keyboard_arrow_down_black_18"
+        android:focusable="true"
+        android:gravity="center"
+        android:inputType="none"
+        android:padding="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectPaymentTitle" />
+
+    <TextView
+        android:id="@+id/textViewInsuranceTypes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Please select the insurance type:"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewSelectPayment"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectPayment" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/textViewInsuranceTypes"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInsuranceTypes">
+
+        <RadioButton
+            android:id="@+id/radioButtonInsuranceType1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal" />
+
+        <RadioButton
+            android:id="@+id/radioButtonInsuranceType2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Group" />
+
+        <RadioButton
+            android:id="@+id/radioButtonInsuranceType3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonCreateProfilePopup"
+        android:layout_width="150dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_red"
+        android:text="create"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
